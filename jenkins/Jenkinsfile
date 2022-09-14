@@ -1,5 +1,5 @@
 node {
-    /* Requires the Docker Pipeline plugin to be installed */
+    /* kode final */
 
     stage('Build') {
         docker.image('python:2-alpine').inside {
