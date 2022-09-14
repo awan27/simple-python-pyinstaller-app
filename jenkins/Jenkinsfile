@@ -1,4 +1,4 @@
-node (label: 'master') {
+node {
     /* Requires the Docker Pipeline plugin to be installed */
 
     stage('Build') {
