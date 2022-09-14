@@ -10,6 +10,7 @@ node {
 
     stage('Test') {
         docker.image('node:16.13.1-alpine').inside {
+            checkout scm
             sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
         }
     }
