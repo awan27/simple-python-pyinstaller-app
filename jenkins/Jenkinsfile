@@ -4,7 +4,7 @@ node {
     stage('Build') {
         docker.image('python:2-alpine').inside {
             checkout scm
-            sh 'apk add --update py-pip'
+            sh 'pip --version'
             sh 'python -m py_compile sources/add2vals.py sources/calc.py'
         }
     }
