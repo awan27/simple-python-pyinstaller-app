@@ -19,12 +19,14 @@ node {
     }
 
     stage('Deploy') {
-        docker.image('cdrx/pyinstaller-linux:python2').inside("--entrypoint='/bin/sh'") {
-            sh 'pyinstaller --onefile sources/add2vals.py'
-            sshagent (credentials: ['ubuntu-ec2']) {
-                sh 'scp dist/add2vals ubuntu@18.139.114.24:/home/ubuntu/add2vals'
-                sh 'ssh ubuntu@18.139.114.24 && chmod +x /home/ubuntu/add2vals && ./home/ubuntu/add2vals 6 6'
-            }
-        }
+        //docker.image('cdrx/pyinstaller-linux:python2').inside("--entrypoint='/bin/sh'") {
+        //    sh 'pyinstaller --onefile sources/add2vals.py'
+        //    sshagent (credentials: ['ubuntu-ec2']) {
+        //        sh 'scp dist/add2vals ubuntu@18.139.114.24:/home/ubuntu/add2vals'
+        //        sh 'ssh ubuntu@18.139.114.24 && chmod +x /home/ubuntu/add2vals && ./home/ubuntu/add2vals 6 6'
+        //    }
+        //}
+        checkout scm
+        docker run -v "$(pwd):/src/" cdrx/pyinstaller-linux "pyinstaller --onefile sources/add2vals.py"
     }
 }
