@@ -17,7 +17,7 @@ node {
     }
 
     stage('Manual Approval') {
-        input "Deploy to prod?"
+        input "Lanjutkan ke tahap Deploy?"
     }
 
     stage('Deploy') {
