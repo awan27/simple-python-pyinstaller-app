@@ -22,7 +22,7 @@ node {
         
         sshagent (credentials: ['ubuntu-ec2']) {
                 sh 'scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null dist/add2vals ubuntu@18.139.114.24:/home/ubuntu/add2vals'
-                sh 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@18.139.114.24 "chmod +x /home/ubuntu/add2vals && cd /home/ubuntu && ./add2vals 6 7"'
+                sh 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@18.139.114.24 "chmod +x /home/ubuntu/add2vals && cd /home/ubuntu && ./add2vals 6 7 && sleep 60 && exit"'
         }
     }
 }
