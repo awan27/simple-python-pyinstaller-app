@@ -18,7 +18,6 @@ node {
 
     stage('Manual Approval') {
         input "Deploy to prod?"
-        ok 'Yes'
     }
 
     stage('Deploy') {
